@@ -14,10 +14,10 @@ So whether you are a full-blown gas golfing expert, a degen looking to codify yo
 
 ## Definitions
 
-- [Vault](https://github.com/yearn/yearn-vaults-v3/blob/master/contracts/VaultV3.vy): A vault or "Meta Vault" in V3 refers to an ERC-4626 compliant contract that takes in user deposits, mints shares corresponding to the user's share of the underlying assets held in that vault, and then allocates the underlying asset to a range of different "strategies" that earn yield on that asset. 
+- [Vault](https://github.com/yearn/yearn-vaults-v3/blob/master/contracts/VaultV3.vy): A vault or "Allocator Vault" in V3 refers to an ERC-4626 compliant contract that takes in user deposits, mints shares corresponding to the user's share of the underlying assets held in that vault, and then allocates the underlying asset to a range of different "strategies" that earn yield on that asset. 
 - Strategy: A strategy in V3 refers to a yield-generating contract added to a vault that has the needed [ERC-4626 interface](https://github.com/yearn/yearn-vaults-v3/blob/master/contracts/VaultV3.vy#L39). The strategy takes the underlying asset and deploys it to a single source, generating yield on that asset.
-- [TokenizedStrategy](https://github.com/yearn/tokenized-strategy/blob/master/src/TokenizedStrategy.sol#L14-L26) A technical implementation of a Strategy that is also a stand-alone ERC4626 compliant Vault. These are the yield generators in the V3 ecosystem. This pattern can be used so that either Meta Vaults or individual users can deposit directly into and receive shares in return. 
-- [Vault Factory](https://github.com/yearn/yearn-vaults-v3/blob/master/contracts/VaultFactory.vy): A factory contract deployed by Yearn Governance that all Vaults of a specific version can be easily and trustlessly deployed from.
+- [TokenizedStrategy](https://github.com/yearn/tokenized-strategy/blob/master/src/TokenizedStrategy.sol#L14-L26) A technical implementation of a Strategy that is also a stand-alone ERC4626 compliant Vault. These are the yield generators in the V3 ecosystem. This pattern can be used so that either Allocator Vaults or individual users can deposit directly into and receive shares in return. 
+- [Vault Factory](https://github.com/yearn/yearn-vaults-v3/blob/master/contracts/VaultFactory.vy): A factory contract deployed by Yearn Governance that all Allocator Vaults of a specific version can be easily and trustlessly deployed from.
 
 
 ## Get started
@@ -29,6 +29,8 @@ So whether you are a full-blown gas golfing expert, a degen looking to codify yo
 
 ## Contract Addresses
 
+*Deployments are done using create2 factories and should be stable across all EVM chains the protocol has been deployed on. 
+
 ### Core
 
 #### VERSION 3.0.0:
@@ -39,8 +41,12 @@ So whether you are a full-blown gas golfing expert, a degen looking to codify yo
 
 ### Periphery
 
- - Address Provider: ``
- - Router: `0x1112dbCF805682e828606f74AB717abf4b4FD8DE`
+ - Address Provider: `0xB1662c1E500610F5D14B8041FD5306bbD3D8EdEe`
  - Release Registry: `0x5a6E1eCC767d949D6da74e76b05DBB4870488ef6`
- - Registry Factory: `0xe0aFFaC3D8e7CBac1e73FCBD0281C3FD2B2cC2a5`
- - Common Report Trigger: `0x4D25b3aed34eC1222846F6C87e2ac4A73f4ab6b6`
+ - Router: `0x1112dbCF805682e828606f74AB717abf4b4FD8DE`
+ - Registry Factory: `0x8A25ea14C9b7fAdAeFaB1A096bf0ebC15C6e6Cc9`
+ - Common Report Trigger: `0x2E3C3F2335D18C52FA0404D9c444938054bbF172`
+ - APR Oracle: `0x02b0210fC1575b38147B232b40D7188eF14C04f2`
+ - Debt Allocator Factory**: `0x13f485b8440A8aA43db11cbd311B0F208F4fD458`
+
+**If a contract has not been deployed on a specific chain it can be done permissionlessly using the scripts in the relevant GitHub repo.**
