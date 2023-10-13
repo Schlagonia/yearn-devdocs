@@ -41,4 +41,4 @@ So whether you are a full-blown gas golfing expert, a degen looking to codify yo
 
  - Periphery Address Provider: `0xB1662c1E500610F5D14B8041FD5306bbD3D8EdEe`
 
-**If a contract has not been deployed on a specific chain it can be done permissionlessly using the scripts in the relevant GitHub repo. Or reach out to a Yearn contributor**
+**If a contract has not been deployed on a specific chain it can be done permissionlessly using the scripts in the relevant GitHub repo. Or reach out to a Yearn contributor for help.**
